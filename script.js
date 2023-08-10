@@ -6,27 +6,17 @@ form.addEventListener('change', save);
 function add(){
   const today = new Date().toLocaleDateString('pt-br').slice(0, -5)
   const dayExists = nlwSetup.dayExists(today);
-
-  if(dayExists){
+  if(dayExists) {
 alert("Dia já incluso 🔴");
 return
-  }
+}
 
   alert('Adicionado com sucesso 🟢');
 nlwSetup.addDay(today);
 }
-function save(){
+function save() {
     localStorage.setItem('NLWSetup@habits', JSON.stringify(nlwSetup.data));
 }
-
-
-/*
-const data = {
-  run: ['01-01', '01-02', '01-03', '01-04', '01-05', '01-06'],
-  pills: ['01-03'],
-  exercise: ['01-04', '01-05']
-}
-*/
 const data= JSON.parse(localStorage.getItem("NLWSetup@habits")) || {}
 nlwSetup.setData(data)
 nlwSetup.load()
